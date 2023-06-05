@@ -15,7 +15,7 @@ Possible use cases may include:
 ## Installation
 
 ```
-pip install datasetGPT
+pip install distiller
 ```
 
 Most of the generation features rely on third-party APIs. Install their respective packages:
@@ -79,13 +79,13 @@ The command above should produce a dataset file with 4 texts. Each possible comb
 ]
 ```
 
-Alternatively, you can use our [`TextsGenerator`](https://github.com/radi-cho/datasetGPT/blob/main/datasetGPT/texts.py#L27) to produce texts in Python.
+Alternatively, you can use our [`TextsGenerator`](https://github.com/radi-cho/distiller/blob/main/distiller/texts.py#L27) to produce texts in Python.
 
 ### Generate conversations with the ChatGPT API
 
 ```bash
 export OPENAI_API_KEY="..."
-datasetGPT conversations \
+distiller conversations \
     --length 4 \
     --length 5 \
     --agent1 "You're a shop assistant in a pet store. Answer to customer questions politely." \
@@ -128,10 +128,10 @@ The command above should produce a dataset directory with 16 conversations saved
 }
 ```
 
-You can also use our [`ConversationsGenerator`](https://github.com/radi-cho/datasetGPT/blob/main/datasetGPT/conversations.py#L43) to produce texts with the `gpt-3.5-turbo` API programatically.
+You can also use our [`ConversationsGenerator`](https://github.com/radi-cho/distiller/blob/main/distiller/conversations.py#L43) to produce texts with the `gpt-3.5-turbo` API programatically.
 
 ```python
-from datasetGPT import ConversationsGenerator, ConversationsGeneratorConfig, DatasetWriter
+from distiller import ConversationsGenerator, ConversationsGeneratorConfig, DatasetWriter
 
 dataset_writer = DatasetWriter() # single_file=True
 
@@ -154,23 +154,23 @@ for conversation in conversations_generator:
 > Still under active development.
 
 Contributions will be highly appreciated. Currently these features are under development:
-- [x] `datasetGPT conversations` - Make two ChatGPT agents talk with one another and record the conversation history.
-- [x] `datasetGPT texts` - Inference different LLMs with a given input prompt and generate multiple outputs by varying parameters.
-- [ ] `datasetGPT transformations` - Apply a list of transformations to a list of texts. For example, summarizing a list of texts for a {child | university student | PhD candidate} to understand.
+- [x] `distiller conversations` - Make two ChatGPT agents talk with one another and record the conversation history.
+- [x] `distiller texts` - Inference different LLMs with a given input prompt and generate multiple outputs by varying parameters.
+- [ ] `distiller transformations` - Apply a list of transformations to a list of texts. For example, summarizing a list of texts for a {child | university student | PhD candidate} to understand.
 - [ ] Support more backend LLMs.
 
 To set up a local development environment:
 
 ```bash
-git clone https://github.com/radi-cho/datasetGPT/
-cd datasetGPT
+git clone https://github.com/radi-cho/distiller/
+cd distiller
 pip install -e .
 ```
 
 ## CLI Reference
 
 ```
-datasetGPT [OPTIONS] COMMAND [ARGS]...
+distiller [OPTIONS] COMMAND [ARGS]...
 
   Command line interface that generates datasets with LLMs.
 
@@ -183,7 +183,7 @@ Commands:
 ```
 
 ```
-datasetGPT texts [OPTIONS]
+distiller texts [OPTIONS]
 
   Inference multiple LLMs at scale.
 
@@ -211,7 +211,7 @@ Options:
 - Currently supported backends: GPT-3 model variants by [OpenAI](https://openai.com/blog/openai-api), the language models by [Cohere](https://pypi.org/project/cohere/), BLOOM through the [Petals API](https://petals.ml/).
 
 ```
-datasetGPT conversations [OPTIONS]
+distiller conversations [OPTIONS]
 
   Produce conversations between two gpt-3.5-turbo agents with given roles.
 
