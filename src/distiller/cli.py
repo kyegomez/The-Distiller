@@ -7,7 +7,7 @@ from .outputs import DatasetWriter
 
 
 @click.group()
-def datasetGPT() -> None:
+def distiller() -> None:
     """Command line interface that generates datasets with LLMs."""
     pass
 
@@ -192,10 +192,10 @@ def texts(
         dataset_writer.save_intermediate_result(text_object)
 
 
-datasetGPT.add_command(texts)
-datasetGPT.add_command(conversations)
+distiller.add_command(texts)
+distiller.add_command(conversations)
 
 
 def main() -> None:
-    """Run the datasetGPT CLI."""
-    datasetGPT()
+    """Run the distiller CLI."""
+    distiller()

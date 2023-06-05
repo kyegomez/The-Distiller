@@ -22,7 +22,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "datasetGPT=datasetGPT:datasetGPT"
+            "distiller=distiller:distiller"
         ],
     },
 )
