@@ -12,6 +12,14 @@ Possible use cases may include:
 > This tool is distributed freely and doesn't imply any restrictions on the downstream use cases.
 > However, you should make sure to follow the **Terms of use** of the backend APIs (OpenAI, Cohere, Petals, etc.) in your specific context.
 
+
+# Agora
+The Distiller is brought to you by Agora, we're an all-new open source multi-modality AI Research organization devoted to advancing Humanity!
+
+
+[Join our Discord and help work on this project or 30+ others!](https://discord.gg/qUtxnK2NMf)
+
+
 ## Installation
 
 ```
