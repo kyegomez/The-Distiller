@@ -11,7 +11,7 @@ setup(
     long_description = long_description,
     long_description_content_type = "text/markdown",
     author="Kye Gomez",
-    author_email="Kye Gomez",
+    author_email="Kye@apac.ai",
     url="https://github.com/kyegomez/The-Distiller",
     keywords=["dataset", "llm", "langchain", "openai"],
     package_dir={"": "src"},

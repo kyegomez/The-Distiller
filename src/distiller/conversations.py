@@ -12,7 +12,7 @@ from langchain.chains import ConversationChain
 from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.schema import SystemMessage
-
+from langchain import HuggingFaceHub
 from .base import DatasetGenerator
 
 OPTIONS_CONFIG_KEYS = ["length", "temperature", "initial_utterance"]
@@ -21,6 +21,10 @@ GENERATOR_CONFIG_KEYS = ["lengths", "temperatures", "initial_utterances"]
 
 @dataclass
 class ConversationsGeneratorConfig:
+    agent_type: str
+    """type of language odel either openai or huggingface"""
+    hf_id: str
+    """repo id for the hf model"""
     openai_api_key: str
     """OpenAI API key."""
     agent1: str
@@ -87,8 +91,15 @@ class ConversationsGenerator(DatasetGenerator):
         ])
 
         memory = ConversationBufferMemory(return_messages=True)
-        llm = ChatOpenAI(temperature=conversation_config["temperature"],
-                         openai_api_key=self.config.openai_api_key)
+
+
+        if self.config.agent_type == "openai":
+            llm = ChatOpenAI(temperature=conversation_config["temperature"], 
+                             openai_api_key=self.config.openai_api_key)
+        elif self.config.agent_type == "huggingface":
+            llm = HuggingFaceHub(repo_id=self.config.repo_id, model_kwargs={"temperature": conversation_config["temperature"], "max_length": 64})
+
+
         chain = ConversationChain(memory=memory, prompt=prompt, llm=llm)
 
         return chain, system_message

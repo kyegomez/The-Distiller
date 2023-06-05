@@ -256,7 +256,6 @@ Options:
 
 * Integrate multi-modality models from hf 
 
-* Enable Multi-Modal Dataset Generation using generate, critique
+* Integrate multi-modality conversation => store images in folder then agent2 looks up image address
 
-
-
+* Enable Multi-Modal Dataset Generation using generate, critique 
