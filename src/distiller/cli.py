@@ -49,6 +49,23 @@ click_temperatures = click.option("--temperature",
 
 
 @click.command()
+@click.option("--hf-api-token",
+              "-hf",
+              type=str,
+              envvar="HF_API_KEY",
+              help="Hugging Face API key.")
+
+@click.option("--model-agent",
+              "-m",
+              type=click.Choice(["openai", "hf"]),
+              default="openai",
+              help="Backend to use for the AI agents. Can be 'openai' for OpenAI's gpt-3.5-turbo or 'hf' for a Hugging Face model. Defaults to 'openai'.")
+
+@click.option("--repo-id",
+              "-r",
+              type=str,
+              help="Hugging Face model repo id, required if 'hf' is chosen as model-agent.")
+
 @click.option("--openai-api-key",
               "-k",
               "openai_api_key",

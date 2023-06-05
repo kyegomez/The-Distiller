@@ -170,7 +170,7 @@ Contributions will be highly appreciated. Currently these features are under dev
 To set up a local development environment:
 
 ```bash
-git clone https://github.com/radi-cho/distiller/
+git clone https://github.com/kyegomez/The-Distiller/tree/Epoch2
 cd distiller
 pip install -e .
 ```
@@ -224,9 +224,13 @@ distiller conversations [OPTIONS]
   Produce conversations between two gpt-3.5-turbo agents with given roles.
 
 Options:
+  
   -k, --openai-api-key TEXT       OpenAI API key.
+  -hf, --hf-api-token TEXT        Hugging Face API token.
   -a, --agent1 TEXT               Agent role description.  [required]
   -b, --agent2 TEXT               Agent role description.  [required]
+  -m, --model-agent [openai|hf]   Backend to use for the AI agents. Can be 'openai' for OpenAI's gpt-3.5-turbo or 'hf' for a Hugging Face model. Defaults to 'openai'.
+  -r, --repo-id TEXT              Hugging Face model repo id, required if 'hf' is chosen as model-agent.
   -i, --interruption [length|end_phrase]
                                   Interruption mode.
   -e, --end-phrase TEXT           Interrupt after this phrase is outputted by
